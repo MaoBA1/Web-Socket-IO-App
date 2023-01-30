@@ -19,7 +19,7 @@ function Chat({ socket, userName, room, windowSize }) {
 
         
     }
-
+    console.log(messagesList.length);
     
       
     useEffect(() => {
@@ -75,40 +75,53 @@ function Chat({ socket, userName, room, windowSize }) {
                 height:"84%",
                 display:"flex",
                 flexDirection:"column",
-            }}>
+            }} start={messagesList.length}>
                 {
                     messagesList.map((item, index) => 
                         !item.right?
                         (
-                            <div style={{
+                            <div key={index} style={{
                                 display:"flex",
                                 flexDirection:"column",
                                 margin:"10px",
                                 padding:"7px",
                                 alignSelf:"flex-start",
                                 width:"30%",
-                                backgroundColor:"grey",
+                                backgroundColor:"green",
                                 borderRadius:"20px"
                             }}>
                                 <label style={{
                                     fontSize:'18px',
-                                    fontWeight:"bold"
+                                    fontWeight:"bold",
+                                    color:"#FFFFFF"
                                 }}>{item.author}</label>
                                 <label>{item.message}</label>
                             </div>
                         )
                         :
                         (
-                            <div style={{
-                                width:"30%",
-                                border:"1px solid",
+                            <div key={index} style={{
                                 display:"flex",
                                 flexDirection:"column",
-                                margin:"10px",
-                                padding:"5px",
-                                alignSelf:"flex-end"
+                                alignItems:"flex-end"
                             }}>
-                                <h4 key={index}>{item.message}</h4>
+                                <div style={{
+                                    width:"30%",
+                                    display:"flex",
+                                    flexDirection:"column",
+                                    margin:"10px",
+                                    padding:"7px",
+                                    alignSelf:"flex-end",
+                                    backgroundColor:"#1e4e90",
+                                    borderRadius:"20px"
+                                }}>
+                                    <label style={{
+                                        fontSize:'18px',
+                                        fontWeight:"bold",
+                                        color:"#FFFFFF"
+                                    }}>{item.author}</label>
+                                    <label>{item.message}</label>
+                                </div>
                             </div>
                         )
                         
@@ -132,6 +145,7 @@ function Chat({ socket, userName, room, windowSize }) {
                         borderTop:"2px solid grey",
                         paddingLeft:"10px"
                     }}
+                    // onSubmit={sendMessage}
                 />
                 <div style={{backgroundColor:"gray", width:"0.3%"}}/>
                 <button 

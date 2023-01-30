@@ -75,7 +75,7 @@ function Chat({ socket, userName, room, windowSize }) {
                 height:"84%",
                 display:"flex",
                 flexDirection:"column",
-            }} start={messagesList.length}>
+            }}>
                 {
                     messagesList.map((item, index) => 
                         !item.right?
@@ -95,7 +95,10 @@ function Chat({ socket, userName, room, windowSize }) {
                                     fontWeight:"bold",
                                     color:"#FFFFFF"
                                 }}>{item.author}</label>
-                                <label>{item.message}</label>
+                                <label style={{
+                                    fontStyle:"italic",
+                                    color:"#FFFFFF"
+                                }}>{item.message}</label>
                             </div>
                         )
                         :
@@ -120,7 +123,10 @@ function Chat({ socket, userName, room, windowSize }) {
                                         fontWeight:"bold",
                                         color:"#FFFFFF"
                                     }}>{item.author}</label>
-                                    <label>{item.message}</label>
+                                    <label style={{
+                                        fontStyle:"italic",
+                                        color:"#FFFFFF"
+                                    }}>{item.message}</label>
                                 </div>
                             </div>
                         )
